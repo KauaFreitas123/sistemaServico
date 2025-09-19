@@ -48,6 +48,9 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();        
     }
+    
+    
+
 
     /**
      * Método responsável por exibir o ícone de status da conexão
@@ -69,7 +72,25 @@ public class TelaLogin extends javax.swing.JFrame {
 //                JOptionPane.showMessageDialog(null, ex);
 //            }
 //        }
-//    }
+//    }try {
+private void status(){
+try {
+conexao = ModuloConexao.conectar();
+    if (conexao != null) {
+        jLblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/dbok.png")));
+    } else {
+        jLblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/dberror.png")));
+    }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+    } finally {
+    try {
+        conexao.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+}
 
     /**
      * Método responsável pela autenticação e gestão de perfil do usuário
@@ -127,6 +148,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jTxtUsario = new javax.swing.JTextField();
         jTxtSenha = new javax.swing.JPasswordField();
         jBtnLogin = new javax.swing.JButton();
+        jLblStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login");
@@ -150,25 +172,35 @@ public class TelaLogin extends javax.swing.JFrame {
                 jBtnLoginActionPerformed(evt);
             }
         });
+        jBtnLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBtnLoginKeyPressed(evt);
+            }
+        });
+
+        jLblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/dberror.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTxtUsario)
-                            .addComponent(jTxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLblStatus)
+                            .addComponent(jLabel2))))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTxtUsario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jBtnLogin))
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,17 +213,23 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addComponent(jBtnLogin)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jBtnLogin)
+                        .addContainerGap(48, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLblStatus)
+                        .addGap(26, 26, 26))))
         );
 
-        setSize(new java.awt.Dimension(335, 187));
+        setSize(new java.awt.Dimension(326, 193));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        //status();
+        status();
     }//GEN-LAST:event_formWindowActivated
 
     private void jBtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLoginActionPerformed
@@ -214,6 +252,26 @@ public class TelaLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "erro");
         }
     }//GEN-LAST:event_jBtnLoginActionPerformed
+
+    private void jBtnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnLoginKeyPressed
+              try {
+            String usuario, senha;
+           
+            usuario = jTxtUsario.getText();
+            senha = jTxtSenha.getText();
+            
+            UsuarioDAO  dao = new UsuarioDAO();
+            
+            
+            dao.efetuaLogin(usuario, senha);
+            
+            
+            this.dispose();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "erro");
+        }
+    }//GEN-LAST:event_jBtnLoginKeyPressed
 
     /**
      * @param args the command line arguments
@@ -249,6 +307,7 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JButton jBtnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLblStatus;
     private javax.swing.JPasswordField jTxtSenha;
     private javax.swing.JTextField jTxtUsario;
     // End of variables declaration//GEN-END:variables

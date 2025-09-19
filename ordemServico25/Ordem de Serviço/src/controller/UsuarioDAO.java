@@ -26,7 +26,7 @@ public class UsuarioDAO {
     }
     
     //Metodo efetuaLogin
-    public void efetuaLogin(String email, String senha ) {
+    public void efetuaLogin(String usuario, String senha ) {
        
         try {
 
@@ -34,15 +34,25 @@ public class UsuarioDAO {
             String sql = "select * from tbusuarios where usuario = ? and senha = ?";
             PreparedStatement stmt;
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, email);
+            stmt.setString(1, usuario);
             stmt.setString(2, senha);
 
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
                 //Usuario logou
-                TelaPrincipal tela = new TelaPrincipal();
+                String perfil = rs.getString(6);
+                if (perfil.equals("Admin")) {
+                    TelaPrincipal tela = new TelaPrincipal();
+                    tela.setVisible(true);
+                    tela.jMnItemUsuario.setEnabled(true);
+                    tela.jMnRelatorio.setEnabled(true);
+                    tela.jLblUsuario.setText(rs.getString(2));
+                } else {
+                    TelaPrincipal tela = new TelaPrincipal();
                 tela.setVisible(true);
+                }
+                
                 
             } else {
                 //Dados incorretos
