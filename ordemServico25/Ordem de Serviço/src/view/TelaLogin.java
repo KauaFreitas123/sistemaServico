@@ -48,49 +48,28 @@ public class TelaLogin extends javax.swing.JFrame {
     public TelaLogin() {
         initComponents();        
     }
-    
-    
-
 
     /**
      * Método responsável por exibir o ícone de status da conexão
      */
-//    private void status() {
-//        try {
-//            conexao = ModuloConexao.conectar();
-//            if (conexao != null) {
-//                lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/dbok.png")));
-//            } else {
-//                lblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/infox/icones/dberror.png")));
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        } finally {
-//            try {
-//                conexao.close();
-//            } catch (SQLException ex) {
-//                JOptionPane.showMessageDialog(null, ex);
-//            }
-//        }
-//    }try {
-private void status(){
-try {
-conexao = ModuloConexao.conectar();
-    if (conexao != null) {
-        jLblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/dbok.png")));
-    } else {
-        jLblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/dberror.png")));
-    }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(null, e);
-    } finally {
-    try {
-        conexao.close();
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, ex);
+    private void status() {
+        try {
+            conexao = ModuloConexao.conectar();
+            if (conexao != null) {
+               jLblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/dbok.png")));
+            } else {
+                jLblStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/dberror.png")));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        } finally {
+            try {
+                conexao.close();
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
         }
     }
-}
 
     /**
      * Método responsável pela autenticação e gestão de perfil do usuário
@@ -166,6 +145,7 @@ conexao = ModuloConexao.conectar();
         jLabel2.setText("Senha");
 
         jBtnLogin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jBtnLogin.setMnemonic('e');
         jBtnLogin.setText("Entrar");
         jBtnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,27 +165,26 @@ conexao = ModuloConexao.conectar();
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLblStatus)
-                            .addComponent(jLabel2))))
-                .addGap(33, 33, 33)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTxtUsario, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jBtnLogin))
-                .addContainerGap(32, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTxtUsario)
+                            .addComponent(jTxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jBtnLogin)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLblStatus)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTxtUsario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -213,18 +192,14 @@ conexao = ModuloConexao.conectar();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTxtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBtnLogin)
-                        .addContainerGap(48, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLblStatus)
-                        .addGap(26, 26, 26))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBtnLogin)
+                    .addComponent(jLblStatus))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(326, 193));
+        setSize(new java.awt.Dimension(335, 187));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -235,41 +210,44 @@ conexao = ModuloConexao.conectar();
     private void jBtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLoginActionPerformed
         // Botao entrar
         try {
-            String usuario, senha;
+            String usario, senha;
            
-            usuario = jTxtUsario.getText();
+            usario = jTxtUsario.getText();
             senha = jTxtSenha.getText();
             
             UsuarioDAO  dao = new UsuarioDAO();
             
             
-            dao.efetuaLogin(usuario, senha);
+            dao.efetuaLogin(usario, senha);
             
             
             this.dispose();
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "erro");
+            
         }
     }//GEN-LAST:event_jBtnLoginActionPerformed
 
     private void jBtnLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBtnLoginKeyPressed
-              try {
-            String usuario, senha;
+       // Botao entrar
+        try {
+            String usario, senha;
            
-            usuario = jTxtUsario.getText();
+            usario = jTxtUsario.getText();
             senha = jTxtSenha.getText();
             
             UsuarioDAO  dao = new UsuarioDAO();
             
             
-            dao.efetuaLogin(usuario, senha);
+            dao.efetuaLogin(usario, senha);
             
             
             this.dispose();
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "erro");
+            
         }
     }//GEN-LAST:event_jBtnLoginKeyPressed
 

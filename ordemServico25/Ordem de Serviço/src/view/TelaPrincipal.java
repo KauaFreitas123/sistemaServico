@@ -31,21 +31,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLblData = new javax.swing.JLabel();
-        jLblUsuario = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLblUsuario = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMnCadastro = new javax.swing.JMenu();
-        jMnItemCliente = new javax.swing.JMenuItem();
-        jMnItemServico = new javax.swing.JMenuItem();
-        jMnItemUsuario = new javax.swing.JMenuItem();
+        jMnItmCliente = new javax.swing.JMenuItem();
+        jMnItmServico = new javax.swing.JMenuItem();
+        jMnItmUsuario = new javax.swing.JMenuItem();
         jMnRelatorio = new javax.swing.JMenu();
-        jMnRelClientes = new javax.swing.JMenuItem();
-        jMnRelServicos = new javax.swing.JMenuItem();
+        jMnRelCliente = new javax.swing.JMenuItem();
+        jMnRelServico = new javax.swing.JMenuItem();
         jMnSobre = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMnSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -60,57 +63,80 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 883, Short.MAX_VALUE)
+            .addGap(0, 751, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 493, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Data");
 
         jLblData.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLblData.setText("Data");
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel3.setText("Usuário");
+
         jLblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLblUsuario.setText("Usuário");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Usuário");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLblData)
+                    .addComponent(jLabel3)
+                    .addComponent(jLblUsuario))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLblData)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLblUsuario))
+        );
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/pc.png"))); // NOI18N
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/logo (1).jpg"))); // NOI18N
 
         jMnCadastro.setMnemonic('c');
         jMnCadastro.setText("Cadastro");
 
-        jMnItemCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMnItemCliente.setText("Cliente");
-        jMnItemCliente.addActionListener(new java.awt.event.ActionListener() {
+        jMnItmCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMnItmCliente.setText("Cliente");
+        jMnItmCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMnItemClienteActionPerformed(evt);
+                jMnItmClienteActionPerformed(evt);
             }
         });
-        jMnCadastro.add(jMnItemCliente);
+        jMnCadastro.add(jMnItmCliente);
 
-        jMnItemServico.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMnItemServico.setText("Ordem Serviço");
-        jMnItemServico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMnItemServicoActionPerformed(evt);
-            }
-        });
-        jMnCadastro.add(jMnItemServico);
+        jMnItmServico.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMnItmServico.setText("Ordem Serviço");
+        jMnCadastro.add(jMnItmServico);
 
-        jMnItemUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMnItemUsuario.setText("Usuário");
-        jMnItemUsuario.setEnabled(false);
-        jMnItemUsuario.addActionListener(new java.awt.event.ActionListener() {
+        jMnItmUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMnItmUsuario.setText("Usuário");
+        jMnItmUsuario.setEnabled(false);
+        jMnItmUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMnItemUsuarioActionPerformed(evt);
+                jMnItmUsuarioActionPerformed(evt);
             }
         });
-        jMnCadastro.add(jMnItemUsuario);
+        jMnCadastro.add(jMnItmUsuario);
 
         jMenuBar1.add(jMnCadastro);
 
@@ -118,23 +144,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMnRelatorio.setText("Relatório");
         jMnRelatorio.setEnabled(false);
 
-        jMnRelClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMnRelClientes.setText("Clientes");
-        jMnRelClientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMnRelClientesActionPerformed(evt);
-            }
-        });
-        jMnRelatorio.add(jMnRelClientes);
+        jMnRelCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMnRelCliente.setText("Clientes");
+        jMnRelatorio.add(jMnRelCliente);
 
-        jMnRelServicos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        jMnRelServicos.setText("Serviços");
-        jMnRelServicos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMnRelServicosActionPerformed(evt);
-            }
-        });
-        jMnRelatorio.add(jMnRelServicos);
+        jMnRelServico.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMnRelServico.setText("Serviços");
+        jMnRelatorio.add(jMnRelServico);
 
         jMenuBar1.add(jMnRelatorio);
 
@@ -146,6 +162,21 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenuBar1.add(jMnSobre);
+
+        jMenu1.setMnemonic('g');
+        jMenu1.setText("Configuração");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuItem1.setMnemonic('t');
+        jMenuItem1.setText("Trocar Usuário");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
 
         jMnSair.setMnemonic('i');
         jMnSair.setText("Sair");
@@ -166,91 +197,71 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLblUsuario)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLblData)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel2)))
-                        .addGap(0, 21, Short.MAX_VALUE))
+                                .addComponent(jLabel4)
+                                .addGap(0, 11, Short.MAX_VALUE))
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel2)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(96, 96, 96)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLblData)
-                .addGap(88, 88, 88)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLblUsuario)
-                .addGap(26, 26, 26))
-            .addComponent(jDesktopPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addGap(56, 56, 56)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 37, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMnItemServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnItemServicoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMnItemServicoActionPerformed
-
-    private void jMnRelServicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnRelServicosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMnRelServicosActionPerformed
-
-    private void jMnRelClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnRelClientesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMnRelClientesActionPerformed
-    
     private void jMnSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMnSairMouseClicked
-                
-            int resp;
-            resp = JOptionPane.showConfirmDialog(null, "Deseja realmente sair do sistema? ", "Atenção!",JOptionPane.YES_NO_OPTION);
-            if(resp == JOptionPane.YES_OPTION){
-                
-                JOptionPane.showMessageDialog(null, "Saindo...");
-                System.exit(0); 
-           }
+        int resp;
+        resp = JOptionPane.showConfirmDialog(null, "Deseja realmente sair do Sistema?", "Atenção", JOptionPane.YES_NO_OPTION);
+        if (resp == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_jMnSairMouseClicked
 
     private void jMnSobreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMnSobreMouseClicked
-        
-        TelaSobre tela = new TelaSobre();
-        tela.setVisible(true);
+        TelaSobre sobre = new TelaSobre();
+        sobre.setVisible(true);
     }//GEN-LAST:event_jMnSobreMouseClicked
 
-    private void jMnItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnItemUsuarioActionPerformed
-        
+    private void jMnItmUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnItmUsuarioActionPerformed
         TelaUsuario usuario = new TelaUsuario();
         usuario.setVisible(true);
         jDesktopPane1.add(usuario);
-    }//GEN-LAST:event_jMnItemUsuarioActionPerformed
-
-    private void jMnItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnItemClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMnItemClienteActionPerformed
+    }//GEN-LAST:event_jMnItmUsuarioActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-            
         Date data = new Date();
         DateFormat formatador = DateFormat.getDateInstance(DateFormat.SHORT);
-        jLblData.setText(formatador.format(data));// TODO add your handling code here:
+        jLblData.setText(formatador.format(data));
     }//GEN-LAST:event_formWindowActivated
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        TelaLogin tela = new TelaLogin();
+        tela.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMnItmClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnItmClienteActionPerformed
+        TelaCliente tela = new TelaCliente();
+        tela.setVisible(true);
+        jDesktopPane1.add(tela);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMnItmClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -295,15 +306,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLblData;
     public static javax.swing.JLabel jLblUsuario;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu jMnCadastro;
-    private javax.swing.JMenuItem jMnItemCliente;
-    private javax.swing.JMenuItem jMnItemServico;
-    public static javax.swing.JMenuItem jMnItemUsuario;
-    private javax.swing.JMenuItem jMnRelClientes;
-    private javax.swing.JMenuItem jMnRelServicos;
+    private javax.swing.JMenuItem jMnItmCliente;
+    private javax.swing.JMenuItem jMnItmServico;
+    public static javax.swing.JMenuItem jMnItmUsuario;
+    private javax.swing.JMenuItem jMnRelCliente;
+    private javax.swing.JMenuItem jMnRelServico;
     public static javax.swing.JMenu jMnRelatorio;
     private javax.swing.JMenu jMnSair;
     private javax.swing.JMenu jMnSobre;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

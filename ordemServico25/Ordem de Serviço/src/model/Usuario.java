@@ -6,7 +6,7 @@ package model;
 
 /**
  *
- * 
+ * @author clebe
  */
 public class Usuario {
     private int idUser;
@@ -17,6 +17,7 @@ public class Usuario {
     private String perfil;
 
     public Usuario() {
+        
     }
 
     public Usuario(int idUser, String usuario, String fone, String login, String senha, String perfil) {
