@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import jdbc.ModuloConexao;
 
 /**
  *
@@ -20,6 +21,12 @@ import java.sql.ResultSet;
 public class ClienteDAO {
     
     private Connection conexao;
+
+    public ClienteDAO() {
+        this.conexao = ModuloConexao.conectar();
+    }
+    
+    
     
     public List<Cliente> listarCliente() {
         try {

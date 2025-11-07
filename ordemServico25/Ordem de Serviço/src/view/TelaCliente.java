@@ -63,7 +63,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         DefaultTableModel dados = (DefaultTableModel) tblClientes.getModel();
         dados.setNumRows(0);
 
-        for (Cliente c : lista) {
+        for (Cliente c : lista) {       
             dados.addRow(new Object[]{
                 c.getId(),
                 c.getNome(),
@@ -109,7 +109,6 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         setTitle("Clientes");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-                formInternalFrameActivated(evt);
             }
             public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -122,6 +121,7 @@ public class TelaCliente extends javax.swing.JInternalFrame {
             public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
             }
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
             }
         });
 
@@ -298,7 +298,15 @@ public class TelaCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCliPesquisarKeyReleased
 
     private void tblClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClientesMouseClicked
-        
+    
+    txtCliId.setText(tblClientes.getValueAt(tblClientes.getSelectedRow(), 0).toString());
+    txtCliNome.setText(tblClientes.getValueAt(tblClientes.getSelectedRow(), 1).toString());
+    txtCliEndereco.setText(tblClientes.getValueAt(tblClientes.getSelectedRow(), 2).toString());
+    txtCliFone.setText(tblClientes.getValueAt(tblClientes.getSelectedRow(), 3).toString());
+    txtCliEmail.setText(tblClientes.getValueAt(tblClientes.getSelectedRow(), 4).toString());
+    btnAdicionar.setEnabled(false);
+    btnAlterar.setEnabled(true);
+    btnRemover.setEnabled(true);
     }//GEN-LAST:event_tblClientesMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -309,9 +317,9 @@ public class TelaCliente extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnRemoverActionPerformed
 
-    private void formInternalFrameActivated(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameActivated
-        listar();
-    }//GEN-LAST:event_formInternalFrameActivated
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+         listar();
+    }//GEN-LAST:event_formInternalFrameOpened
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
